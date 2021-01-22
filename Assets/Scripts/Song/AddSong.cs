@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class AddSong : MonoBehaviour
 {
@@ -60,17 +61,9 @@ public class AddSong : MonoBehaviour
 
     private IEnumerator DisplaySuccessText()
     {
-        while (successText.color.a < 1.0f)
-        {
-            successText.color = new Color(successText.color.r, successText.color.g, successText.color.b, successText.color.a + (Time.deltaTime / 1.0f));
-            yield return null;
-        }
+        successText.DOFade(1f, 1);
         yield return new WaitForSeconds(2);
 
-        while (successText.color.a > 0.0f)
-        {
-            successText.color = new Color(successText.color.r, successText.color.g, successText.color.b, successText.color.a - (Time.deltaTime / 1.0f));
-            yield return null;
-        }
+        successText.DOFade(0f, 1);
     }
 }
