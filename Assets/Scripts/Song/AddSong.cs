@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 public class AddSong : MonoBehaviour
 {
@@ -48,14 +48,13 @@ public class AddSong : MonoBehaviour
         song.Title = title.text;
         song.Artist = artist.text;
         song.Lyrics = lyrics.text.Split('\n');
-
+        song.id = Guid.NewGuid().ToString();
         songManager.AddSong(song);
 
         title.text = "";
         artist.text = "";
         lyrics.text = "";
 
-        //TODO: Replace by Dotween
         StartCoroutine(DisplaySuccessText());
     }
 

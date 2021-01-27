@@ -33,7 +33,7 @@ public class SongList : MonoBehaviour
         isArtistOrdered = false;
         songObjects = new List<GameObject>();
         songList = new List<Song>();
-        songList = songManager.ListAllSongs();
+        songList = songManager.AllSongs;
 
         UpdateSongList();
     }
@@ -50,6 +50,7 @@ public class SongList : MonoBehaviour
             GameObject addObj = Instantiate(songPrefab, contentParent.transform);
             addObj.transform.GetChild(0).GetComponent<TMP_Text>().text = song.Title;
             addObj.transform.GetChild(1).GetComponent<TMP_Text>().text = song.Artist;
+            addObj.transform.GetChild(2).GetComponent<TMP_Text>().text = song.id;
             addObj.name = song.Title + "-" + song.Artist;
             songObjects.Add(addObj);
         }
